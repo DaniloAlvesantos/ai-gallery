@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardFooter } from "@heroui/card";
 import { Image } from "@heroui/image";
 import { Button } from "@heroui/button";

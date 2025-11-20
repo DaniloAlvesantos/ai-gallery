@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
+import { Suspense } from "react";
 
 import { Providers } from "./providers";
 
@@ -46,12 +47,14 @@ export default function RootLayout({
         )}
       >
         <QueryProvider>
-          <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-            <Navbar />
-            <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
-              {children}
-            </main>
-          </Providers>
+          <Suspense fallback={<div aria-hidden /> }>
+            <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+              <Navbar />
+              <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
+                {children}
+              </main>
+            </Providers>
+          </Suspense>
         </QueryProvider>
       </body>
     </html>
